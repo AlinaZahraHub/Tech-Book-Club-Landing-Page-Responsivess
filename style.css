@@ -1,0 +1,572 @@
+/* ==========================================================================
+   1. CORE VARIABLES & RESET (Fluid Setup & Dark Palette)
+   ========================================================================== */
+:root {
+  --bg-main: #0b0f19;
+  --bg-card: rgba(20, 26, 43, 0.6);
+  --border-glass: rgba(255, 255, 255, 0.08);
+  
+  --color-rose: #ff6584;
+  --color-rose-glow: rgba(255, 101, 132, 0.25);
+  --color-rose-dark: #e04d6c;
+  
+  --text-main: #ffffff;
+  --text-muted: #e2e8f0;
+  --text-dim: #94a3b8;
+
+  --fs-h1: clamp(2.2rem, 6vw, 3.8rem);
+  --fs-h2: clamp(1.6rem, 4vw, 2.4rem);
+  --fs-h3: clamp(1.25rem, 3vw, 1.6rem);
+  --fs-body: clamp(0.95rem, 2vw, 1.1rem);
+  
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--text-main);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* ==========================================================================
+   2. BASE MOBILE-FIRST STYLES (Default layout for smaller screens)
+   ========================================================================== */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 1.5rem;
+  background: rgba(11, 15, 25, 0.8);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.5px;
+}
+
+.logo span {
+  color: var(--color-rose);
+}
+
+.menu-trigger {
+  background: none;
+  border: 1px solid var(--border-glass);
+  color: var(--text-main);
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: var(--transition-smooth);
+}
+
+.menu-trigger:hover {
+  border-color: var(--color-rose);
+  color: var(--color-rose);
+}
+
+.nav-menu[popover] {
+  border: none;
+  background: rgba(15, 22, 36, 0.95);
+  backdrop-filter: blur(16px);
+  width: 100%;
+  height: 100vh;
+  max-width: 100%;
+  margin: 0;
+  padding: 2rem;
+  box-shadow: 20px 0 50px rgba(0,0,0,0.5);
+  color: var(--text-main);
+}
+
+.nav-menu::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.menu-close {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 2.5rem;
+  cursor: pointer;
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 1.3rem;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+}
+
+.nav-links a:hover, .nav-links a.active {
+  color: var(--color-rose);
+}
+
+.btn-accent, .btn-primary, .btn-outline, .btn-card-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0.75rem 1.7rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-accent, .btn-primary {
+  background-color: var(--color-rose);
+  color: #0b0f19;
+  border: none;
+  box-shadow: 0 4px 14px var(--color-rose-glow);
+}
+
+.btn-accent:hover, .btn-primary:hover {
+  transform: translateY(-2px);
+  background-color: var(--color-rose-dark);
+  box-shadow: 0 6px 20px rgba(255, 101, 132, 0.4);
+}
+
+.btn-outline {
+  border: 1px solid var(--border-glass);
+  color: var(--text-main);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  border-color: var(--color-rose);
+  color: var(--color-rose);
+}
+
+.hero-section {
+  padding: 3rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.tag-rose {
+  display: inline-block;
+  background: var(--color-rose-glow);
+  color: var(--color-rose);
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 101, 132, 0.2);
+  margin-bottom: 1rem;
+}
+
+.hero-content h1 {
+  font-size: var(--fs-h1);
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: var(--fs-body);
+  color: var(--text-dim);
+  margin-bottom: 2rem;
+  max-width: 540px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 250px;
+}
+
+.glass-sphere {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.03));
+  border: 1px solid var(--border-glass);
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 20px 30px rgba(255,255,255,0.05), 0 30px 40px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.glass-sphere::before {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: var(--color-rose);
+  filter: blur(60px);
+  top: -20px;
+  left: -20px;
+  z-index: -1;
+  border-radius: 50%;
+}
+
+.books-section {
+  padding: 4rem 1.5rem;
+  border-top: 1px solid var(--border-glass);
+}
+
+.section-header {
+  margin-bottom: 2.5rem;
+}
+
+.section-header h2 {
+  font-size: var(--fs-h2);
+  margin-bottom: 0.5rem;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.book-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 101, 132, 0.4);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.card-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--border-glass);
+  color: var(--color-rose);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.book-cover-placeholder {
+  background: linear-gradient(135deg, #161f32, #0f1624);
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-main);
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-body h3 {
+  font-size: var(--fs-h3);
+  margin-bottom: 0.25rem;
+}
+
+.card-body .author {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rating {
+  font-weight: 600;
+  color: #ffb800;
+}
+
+.btn-card-action {
+  min-height: 38px;
+  padding: 0.4rem 1.2rem;
+  background: transparent;
+  border: 1px solid var(--color-rose);
+  color: var(--color-rose);
+  font-size: 0.9rem;
+}
+
+.btn-card-action:hover {
+  background: var(--color-rose);
+  color: #0b0f19;
+}
+
+/* 🌟 CLUB BENEFITS SPECIFIC LAYOUT LAYER 🌟 */
+.benefits-section {
+  padding: 4rem 1.5rem;
+  border-top: 1px solid var(--border-glass);
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.benefit-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: var(--transition-smooth);
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 101, 132, 0.4);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.benefit-icon {
+  font-size: 2rem;
+}
+
+.benefit-card h3 {
+  font-size: var(--fs-h3);
+}
+
+.benefit-card p {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.join-section {
+  padding: 4rem 1.5rem;
+}
+
+.join-card {
+  background: linear-gradient(135deg, rgba(20, 26, 43, 0.8), rgba(11, 15, 25, 0.8));
+  border: 1px solid var(--border-glass);
+  border-radius: 20px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.join-card h2 {
+  font-size: var(--fs-h2);
+  margin-bottom: 1rem;
+}
+
+.join-card p {
+  color: var(--text-dim);
+  margin-bottom: 2rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.join-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input-field {
+  min-height: 46px;
+  padding: 0.8rem 1.2rem;
+  background: rgba(11, 15, 25, 0.6);
+  border: 1px solid var(--border-glass);
+  border-radius: 8px;
+  color: var(--text-main);
+  font-size: 1rem;
+  transition: var(--transition-smooth);
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--color-rose);
+  box-shadow: 0 0 10px rgba(255, 101, 132, 0.2);
+}
+
+.app-footer {
+  margin-top: auto;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid var(--border-glass);
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+/* ==========================================================================
+   3. PROGRESSIVE ENHANCEMENT (Media Queries for Large Screens)
+   ========================================================================== */
+@media (min-width: 768px) {
+  .books-grid, .benefits-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2.5rem;
+  }
+  
+  .join-form {
+    flex-direction: row;
+    max-width: 550px;
+    margin: 0 auto;
+    background: rgba(11, 15, 25, 0.6);
+    border: 1px solid var(--border-glass);
+    padding: 0.4rem;
+    border-radius: 12px;
+  }
+  
+  .input-field {
+    border: none;
+    flex-grow: 1;
+    background: transparent;
+  }
+
+  .input-field:focus {
+    box-shadow: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .app-header {
+    padding: 1.5rem 4rem;
+  }
+
+  .menu-trigger, .menu-close {
+    display: none;
+  }
+
+  .nav-menu[popover] {
+    position: static;
+    display: block;
+    width: auto;
+    height: auto;
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  .nav-links {
+    flex-direction: row;
+    margin-top: 0;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+  }
+
+  .hero-section, .books-section, .benefits-section, .join-section {
+    padding-left: 4rem;
+    padding-right: 4rem;
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .hero-section {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .hero-content {
+    flex: 1;
+  }
+
+  .hero-visual {
+    flex: 1;
+    min-height: 400px;
+  }
+
+  .glass-sphere {
+    width: 320px;
+    height: 320px;
+  }
+
+  .books-grid, .benefits-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .join-card {
+    padding: 4rem;
+  }
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Book Club | Cyber-Dark Portal</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <header class="app-header">
+      <div class="logo">
+        TechBook<span>Club</span>
+      </div>
+      
+      <button class="menu-trigger" popovertarget="mobile-nav">
+        ☰
+      </button>
+
+      <nav id="mobile-nav" popover class="nav-menu">
+        <button class="menu-close" popovertarget="mobile-nav" popovertargetaction="hide">×</button>
+        <ul class="nav-links">
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#books">Featured Books</a></li>
+          <li><a href="#benefits">Club Benefits</a></li>
+          <li><a href="#join" class="btn-primary">Join Club</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="hero" class="hero-section">
+      <div class="hero-content">
+        <span class="tag-rose">🚀 Live Tech Meetups</span>
+        <h1>Level Up Your Code Architecture</h1>
+        <p>Join an elite community of developers breaking down industry-leading tech books every week. Read smart, code smarter.</p>
+        <div class="hero-actions">
+          <a href="#join" class="btn-accent">Get Started</a>
+          <a href="#books" class="btn-outline">Explore Books</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="glass-sphere"></div>
+      </div>
+    </section>
+
+    <section id="books" class="books-section">
+      <div class="section-header">
+        <h2>Current Reading List</h2>
+        <p>This month's community picks for engineering excellence.</p>
+      </div>
+      
+      <div class="books-grid">
+        
+        <div class="book-card">
+          <div class="card-badge">New Release</div>
+          <div class="book-cover-placeholder">⚡ Designing Data-Intensive Applications</div>
+          <div class="card-body">
+            <h3>Data-Intensive Systems</h3>
+            <p class="author">By Martin Kleppmann</p>
+            <div class="card-footer">
+              <span class="rating">⭐️ 4.9</span>
+              <button class="btn-card-action">Read</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <div class="card-badge">Trending</div>
+          <div class="book-cover-placeholder">🏗️ Clean Architecture</div>
+          <div class="card-body">
+            <h3>Clean Architecture</h3>
+            <p class="author">By Robert C. Martin</p>
+            <div class="card-footer">
+              <span class="rating">⭐️ 4.8</span>
+              <button class="btn-card-action">Read</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="book-card">
+          <div class="card-badge">Advanced</div>
+          <div class="book-cover-placeholder">🧠 Refactoring UI</div>
+          <div class="card-body">
+            <h3>Refactoring UI</h3>
+            <p class="author">By Adam Wathan & Steve Schoger</p>
+            <div class="card-footer">
+              <span class="rating">⭐️ 4.9</span>
+              <button class="btn-card-action">Read</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="benefits" class="benefits-section">
+      <div class="section-header">
+        <h2>Club Member Benefits</h2>
+        <p>Why top engineers and frontend developers join our elite tech workspace.</p>
+      </div>
+
+      <div class="benefits-grid">
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">📅</div>
+          <h3>Weekly Deep-Dives</h3>
+          <p>Interactive sessions breaking down system designs, performance architecture, and technical blueprints paragraph by paragraph.</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">💬</div>
+          <h3>Private Discord Hub</h3>
+          <p>Network with senior architects, frontend practitioners, and AI experts in dedicated code review channels.</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">🛠️</div>
+          <h3>Live Code Labs</h3>
+          <p>Apply book theory directly into clean, micro-engineered web applications with real-world design reviews.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="join" class="join-section">
+      <div class="join-card">
+        <h2>Ready to Future-Proof Your Career?</h2>
+        <p>Sign up today and get access to private Discord channels and interactive weekly coding reviews.</p>
+        <form class="join-form" onsubmit="event.preventDefault();">
+          <input type="email" placeholder="Enter your developer email" required class="input-field">
+          <button type="submit" class="btn-accent">Secure Invite</button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="app-footer">
+      <p>&copy; 2026 TechBookClub. Powered by DecodeLabs Fluid Framework.</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
